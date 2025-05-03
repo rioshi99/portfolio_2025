@@ -1,0 +1,14 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import BlogPost from '../components/ui/BlogPost.astro';
+const pageTitle = 'Blog | My Portfolio';
+const Description = 'blog説明';
+const allPosts = await Astro.glob('./posts/*.md');
+---
+
+<DefaultLayout pageTitle = { pageTitle } Description = { Description }>
+	<p>ここには、私がAstroを学んでいく旅の様子を投稿します。</p>
+	<ul>
+		{allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+	</ul>
+</DefaultLayout>
